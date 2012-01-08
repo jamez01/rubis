@@ -2,18 +2,30 @@
 
 ## rubis server
 require 'drb'
+require 'store'
 
 module Rubis
   module Server
     class Start
-      def initialize(config)
+      def initialize(config = {})
         @config = { :port => 9594,
                     :address => '127.0.0.1',
-
+                    :acl => [],
+                    :slave => false,
+                    :store => :Default }
+        @config.merge!(config) if config.class == Hash
+        #raise "Unknown store: #{config[:store]}" unless Store.?(@config[:store].to_sym) and Store.const_get(@config[:store]).class == Class
+        @store = Store::Default::Default_Store.new
+        DRb.start_service("druby://#{@config[:address]}:#{@config[:port]}",@store)
+        DRb.thread.join
       end
     end
   end
-  def self.run!
-    return Server::Start.new
+  def self.run(config = {})
+    server=Server::Start.new(config)
   end
 end
+
+#Rubis.run
+
+Rubis.run
