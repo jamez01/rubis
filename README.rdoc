@@ -4,6 +4,19 @@ Ruby key value store.
 
 == Installation
 
+git clone git://github.com/jamez01/rubis.git 
+
+* Gem comming soon...
+
 == Examples
 
+require './lib/orm'
+require 'drb'
+
+DRb.start_service
+
+@store = DRbObject.new(nil,"druby://127.0.0.1:9594")
+
+@store.database.key = "Hello, World"
+puts @store.database.key
 
