@@ -1,7 +1,9 @@
+require 'drb'
 require 'ostruct'
+
 class OpenStruct
   include DRbUndumped
-  undef id
+  #eundef id
 end
 module Rubis
   module Store
