@@ -27,5 +27,3 @@ module Rubis
     server=Server::Start.new(config)
   end
 end
-
-Rubis.run
