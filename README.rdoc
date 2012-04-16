@@ -11,13 +11,13 @@ Ruby key value store.
 
 == Examples
 
-require './lib/orm'
-require './lib/client'
+ require './lib/orm'
+ require './lib/client'
 
-@store = Rubis::Client.connect("druby://127.0.0.1:9594","Test_Database")
+ @store = Rubis::Client.connect("druby://127.0.0.1:9594","Test_Database")
 
-@store.customers = [{:name => 'james', :class => 3}, {:name => 'tom', :class => 3}, {:name => 'fred',:class => 4}]
-puts @store.keys
-puts @store.customers.find(:class => 3)
+ @store.customers = [{:name => 'james', :class => 3}, {:name => 'tom', :class => 3}, {:name => 'fred',:class => 4}]
+ puts @store.keys
+ puts @store.customers.find(:class => 3)
 
 

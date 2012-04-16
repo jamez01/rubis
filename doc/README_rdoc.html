@@ -106,13 +106,14 @@ cd rubis &amp;&amp; ruby lib/server.rb</pre>
 
 <h2>Examples</h2>
 
-<p>require ‘./lib/orm’ require ‘./lib/client’</p>
+<pre>require './lib/orm'
+require './lib/client'
 
-<p>@store = DRbObject.new(druby://127.0.0.1:9594“,”Test_Database“)</p>
+@store = Rubis::Client.connect(&quot;druby://127.0.0.1:9594&quot;,&quot;Test_Database&quot;)
 
-<p>@store.customers = [{:name =&gt; ‘james’, :class =&gt; 3}, {:name =&gt;
-‘tom’, class =&gt; 3}, {:name =&gt; ‘fred’,class =&gt; 4}] puts @store.keys
-puts @store.customers.find(:class =&gt; 4)</p>
+@store.customers = [{:name =&gt; 'james', :class =&gt; 3}, {:name =&gt; 'tom', :class =&gt; 3}, {:name =&gt; 'fred',:class =&gt; 4}]
+puts @store.keys
+puts @store.customers.find(:class =&gt; 3)</pre>
 
   </div>
 
