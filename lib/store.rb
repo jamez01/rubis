@@ -8,6 +8,12 @@ class OpenStruct
   def keys
     @table.keys
   end
+  def [](key)
+    @table[key]
+  end
+  def []=(key,value)
+    @table[key]=value
+  end
 end
 module Rubis
   # Data Stores contain the database.  All databases must use the same store.

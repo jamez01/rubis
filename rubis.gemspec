@@ -1,8 +1,9 @@
 Gem::Specification.new do |s|
   s.name    = 'rubis'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.summary = 'In memory key-value store written in pure ruby.'
-
+  s.executables = [ 'rubis_server' ]
+  s.default_executable = [ 'rubis_server' ]
   s.author   = 'James Paterni'
   s.email    = 'james@ruby-code.com'
   s.homepage = 'http://ruby-code.com/projects/rubis'

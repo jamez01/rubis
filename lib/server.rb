@@ -3,6 +3,8 @@
 ## rubis server
 require 'drb'
 require './lib/store.rb'
+require './lib/version.rb'
+
 # Rubis is a key/value.  The store can be any object in the ruby standard library.
 module Rubis
   # The Rubis server leverages druby and listens on port 9594 by default.
