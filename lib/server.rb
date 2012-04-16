@@ -3,8 +3,9 @@
 ## rubis server
 require 'drb'
 require './lib/store.rb'
-
+# Rubis is a key/value.  The store can be any object in the ruby standard library.
 module Rubis
+  # The Rubis server leverages druby and listens on port 9594 by default.
   module Server
     class Start
       def initialize(config = {})
@@ -18,12 +19,12 @@ module Rubis
         @store = Store::Default::Default_Store.new
         puts @config.inspect
         DRb.start_service("druby://#{@config[:address]}:#{@config[:port]}",@store)
-        DRb.thread.join
       end
     end
   end
   def self.run(config = {})
     puts "starting server"
     server=Server::Start.new(config)
+    DRb.thread.join
   end
 end

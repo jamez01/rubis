@@ -4,7 +4,7 @@ Ruby key value store.
 
 == Installation
 
- git clone git://github.com/jamez01/rubis.git 
+ git clone git://github.com/jamez01/rubis.git
  cd rubis && ruby lib/server.rb
 
 * Gem comming soon...
@@ -12,12 +12,12 @@ Ruby key value store.
 == Examples
 
 require './lib/orm'
-require 'drb'
+require './lib/client'
 
-DRb.start_service
+@store = Rubis::Client.connect("druby://127.0.0.1:9594","Test_Database")
 
-@store = DRbObject.new(nil,"druby://127.0.0.1:9594")
+@store.customers = [{:name => 'james', :class => 3}, {:name => 'tom', :class => 3}, {:name => 'fred',:class => 4}]
+puts @store.keys
+puts @store.customers.find(:class => 3)
 
-@store.database.key = "Hello, World"
-puts @store.database.key
 
