@@ -39,6 +39,12 @@ module Rubis
         def databases # :yields: array
           return @@databases.keys
         end
+        def dump
+          return @@databases
+        end
+        def load(store)
+          @@databases = store
+        end
       end
     end
   end
