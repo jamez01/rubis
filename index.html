@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rubis by jamez01</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jamez01/rubis">Fork On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/jamez01/rubis/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/jamez01/rubis/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Rubis</h1>
+          <p></p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/jamez01">jamez01</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p>= Rubis</p>
+
+<p>Ruby key value store.</p>
+
+<p>== Installation</p>
+
+<p>git clone git://github.com/jamez01/rubis.git
+ cd rubis &amp;&amp; ruby lib/server.rb</p>
+
+<ul>
+<li>Gem comming soon...</li>
+</ul><p>== Examples</p>
+
+<p>require './lib/orm'
+  require './lib/client'</p>
+
+<p><a href="https://github.com/store" class="user-mention">@store</a> = Rubis::Client.connect("druby://127.0.0.1:9594","Test_Database")</p>
+
+<p>@store.customers = [{:name =&gt; 'james', :class =&gt; 3}, {:name =&gt; 'tom', :class =&gt; 3}, {:name =&gt; 'fred',:class =&gt; 4}]
+  puts @store.keys
+  puts @store.customers.find(:class =&gt; 3)</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
