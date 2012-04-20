@@ -1,3 +1,8 @@
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+
 desc "Validate the gemspec"
 task :gemspec do
   gemspec.validate
@@ -14,3 +19,5 @@ desc "Install gem locally"
 task :install => :build do
   system "gem install pkg/#{gemspec.name}-#{gemspec.version}"
 end
+
+task :default  => :spec
