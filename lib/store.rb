@@ -43,7 +43,7 @@ module Rubis
           return @@databases
         end
         def load(store)
-          @@databases = store
+          @@databases = store unless store == false
         end
       end
     end

@@ -3,7 +3,7 @@ require './lib/client.rb'
 require 'drb'
 
 # Server must be running for example to work.
-database = Rubis::Client.connect("druby://127.0.0.1:9594","test")
+database = Rubis::Client.connect("rubis://127.0.0.1:9594","example1")
 puts "Connceting.."
 puts "Data existed in database:"
 database.keys.each {|x| puts "#{x}: #{database[x].inspect}" }

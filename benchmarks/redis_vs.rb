@@ -5,7 +5,6 @@ require 'benchmark'
 
 redis = Redis.new
 
-#DRb.start_service
 rubis = Rubis::Client.connect('druby://localhost:9594','benchmark')
 
 

@@ -1,5 +1,22 @@
 #!/usr/bin/env ruby
 require './lib/server.rb'
+require 'optparse'
+require 'yaml'
 
-Rubis.run
+options = {}
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
+  opts.on('-a','--address [ADDRESS]', "Listen address (i.e. 127.0.0.1)") { |v| options[:address] = v.strip }
+  opts.on('-p','--port [PORT]','Listen port') { |v| options[:port] = v.strip }
+  opts.on('-r','--require [GEM]','Require gem') { |v| require v.strip }
+  opts.on('-c','--acl [ACL]', "Not in use") { |v| puts "Not yet supported" ; exit 1 }
+  opts.on('-d','--delay [SECONDS]','Dump delay') { |v| options[:dump_delay] = v.to_f }
+  opts.on('-m','--dump-method [METHOD]','Method used to dump db (i.e. Rubis::Dumper::MarshDump)') { |v| options[:dump_method] = eval(v) }
+  opts.on('-o','--dump-file [FILE]','File to store db dump') { |file| options[:dump_file] = file }
+  opts.on('-s','--store [OBJECT]','Type of store to be used (i.e. Rubis::Store::Default.new)') { |v| options[:store] = eval(v) }
+  opts.on('-f','--config-file [PATH]', "Load config file") { |path| options.merge!(Hash[YAML::load(open(path)).map { |k, v| [k.to_sym, v] }]) }
+  opts.on("-v", "--[no-]verbose", "Run verbosely") { |v| options[:verbose] = v.strip }
+end.parse!
+
+Rubis.run(options)
 
