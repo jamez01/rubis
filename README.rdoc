@@ -1,7 +1,7 @@
 = Rubis
 
 Ruby key value store.
-{<img src="https://secure.travis-ci.org/jamez.01/rubis.png" />}[http://travis-ci.org/jamez.01/rubis]
+{<img src="https://secure.travis-ci.org/jamez01/rubis.png" />}[http://travis-ci.org/jamez01/rubis]
 == Installation
 
  git clone git://github.com/jamez01/rubis.git
