@@ -16,4 +16,3 @@ Benchmark.bm(5) do |x|
   x.report("Redis:")   { (1..1000).each { |i|  redis[("key#{i}").to_sym] } }
   x.report("Rubis:") { (1..1000).each { |i| rubis["key#{i}".to_sym] }}
 end
-

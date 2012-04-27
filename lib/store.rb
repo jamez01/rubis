@@ -19,6 +19,29 @@ module Rubis
   # Data Stores contain the database.  All databases must use the same store.
   module Store
     # The Default store uses a slightly modified openstruct.
+    module HashStore
+      def self.init 
+        return Hash_Store.new
+      end
+      class Hash_Store
+        def initialize()
+          @@databases ||= Hash.new
+        end
+        def database(db)
+          @@databases[db] ||= Hash.new
+          return Hash.new # @databases[db]
+        end
+        def dump
+          return @@databases
+        end
+        def load(store)
+          @@databases=store unless store == false
+        end
+        def databases
+          @@databases.keys
+        end
+      end
+    end
     module Default
       def self.init
         return Default_Store.new
