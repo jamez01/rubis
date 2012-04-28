@@ -29,10 +29,11 @@ module Rubis
         end
         def database(db)
           @@databases[db] ||= Hash.new
-          return Hash.new # @databases[db]
+          @@databases[db].extend(DRbUndumped)
+          return @@databases[db]
         end
         def dump
-          return @@databases
+          return @@databases.dup
         end
         def load(store)
           @@databases=store unless store == false
