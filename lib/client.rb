@@ -19,6 +19,7 @@ module Rubis
     #  require 'rubis/client'
     #  Rubis::Client.connet("druby://127.0.0.1:9594","test_database")
     def self.connect(uri,database,options = {})
+      DRb.start_service
       opts = { :proto => "druby" }.merge(options)
       @store = DRbObject.new(nil,"#{opts[:proto]}://#{uri.gsub(/.*:\/\//,"")}")
       return @store.database(database)

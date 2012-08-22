@@ -20,26 +20,51 @@ module Rubis
   module Store
     # The Default store uses a slightly modified openstruct.
     module HashStore
-      def self.init 
+      class SHash 
+        include DRbUndumped
+        def initialize()
+          @hash = Hash.new
+        end
+        def [](key)
+          return @hash[key]
+        end
+        def []=(key,value)
+          return @hash[key]=value
+        end
+        def marshal_dump
+          @hash
+        end
+        def marshal_load(x)
+          @hash = x
+        end
+        def keys
+          @hash.keys
+        end
+      end
+      def self.init
         return Hash_Store.new
       end
+      # The Default store
       class Hash_Store
+        #include DRbUndumped
         def initialize()
+          #return self
           @@databases ||= Hash.new
         end
-        def database(db)
-          @@databases[db] ||= Hash.new
-          @@databases[db].extend(DRbUndumped)
-          return @@databases[db]
+        # Call a specific database.
+        def database(database_name)
+          @@databases[database_name] ||= HashStore::SHash.new
+          return @@databases[database_name]
+        end
+        # List All Databases.
+        def databases # :yields: array
+          return @@databases.keys
         end
         def dump
-          return @@databases.dup
+          return @@databases
         end
         def load(store)
-          @@databases=store unless store == false
-        end
-        def databases
-          @@databases.keys
+          @@databases = store unless store == false
         end
       end
     end

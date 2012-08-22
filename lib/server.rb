@@ -16,19 +16,19 @@ module Rubis
                     :protocol => "druby",
                     :acl => [],
                     :slave => false,
-                    :dump_delay => 5,
+                    :dump_delay => 3,
                     :dump_method => Rubis::Dumper::MarshalDump.new,
                     :dump_file => './rubis.db',
-                    :store => Store::Default::Default_Store.new }
+                    :store => Store::HashStore::Hash_Store.new }
         @config.merge!(config) if config.class == Hash
         #raise "Unknown store: #{config[:store]}" unless Store.?(@config[:store].to_sym) and Store.const_get(@config[:store]).class == Class
         $store = @config[:store]
         puts @config.inspect
-        DRb.start_service("#{@config[:protocol]}://#{@config[:address]}:#{@config[:port]}",$store)
       end
       def run
         $store.load(@config[:dump_method].send(:restore,@config[:dump_file])) if File.exists?(@config[:dump_file])
         dump_thread
+        DRb.start_service("#{@config[:protocol]}://#{@config[:address]}:#{@config[:port]}",$store)
         DRb.thread.join
       end
       private
@@ -36,6 +36,7 @@ module Rubis
         Thread.new {
           loop do
             sleep @config[:dump_delay]
+            puts @config[:dump_file]
             @config[:dump_method].send(:save,@config[:dump_file],$store.dump)
           end
         }
