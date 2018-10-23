@@ -19,4 +19,3 @@ parser = OptionParser.new do |opts|
 end.parse!
 
 Rubis.run(options)
-
