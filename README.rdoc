@@ -1,5 +1,9 @@
 = Rubis
 
+== Don't use this library.
+Ruby just isn't fast enough to make this a viable solutoin.
+
+== About
 Ruby key value store.
 {<img src="https://secure.travis-ci.org/jamez01/rubis.png" />}[http://travis-ci.org/jamez01/rubis]
 == Installation
